@@ -1,0 +1,13 @@
+﻿
+<div>
+    <p style="color:@(server.IsOnline?"green":"blue")"> @server.Name at @server.City that is @(server.IsOnline ? "online" : "Ofline")</p>
+
+</div>
+
+@code {
+    public Server server = new Server()
+        {
+            Name = "Sarah",
+            City = "Shaqra"
+        };
+}

@@ -1,0 +1,41 @@
+﻿@page "/Servers"
+
+Servers
+<br />
+<br />
+
+<div class="container-fluid text-center">
+    <div class="row w-50">
+
+        @foreach (var city in Cities)
+        {
+            <div class="col">
+                <button type="button">@city</button>
+            </div>
+        }
+
+    </div>
+</div>
+
+<br />
+<br />
+<ul>
+    @foreach (var items in serves)
+    {
+
+        <li>
+            <p>
+                @items.Name at @items.City is
+                <span style="color:@((items.IsOnline ? "green" : "blue"))">
+                    @(items.IsOnline ? "Online" : "Offline")
+                </span>
+            </p>
+        </li>
+    }
+</ul>
+
+@code {
+    private List<Server> serves = ServersRepository.GetServersByCity("Toronto");
+
+    public List<string> Cities = CitiesRepository.GetCeties();
+}
